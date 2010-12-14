@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<License>
+  <Data>
+    <LicensedTo>ITCArg</LicensedTo>
+    <LicenseType>Developer Enterprise Subscription</LicenseType>
+    <LicenseNote>Limited to 1 developer.</LicenseNote>
+    <OrderID>101213102853</OrderID>
+    <OEM>This is not a non-redistributable license</OEM>
+    <Products>
+      <Product>Aspose.Total for Java</Product>
+    </Products>
+    <EditionType>Enterprise</EditionType>
+    <SerialNumber>91830931-0fda-4c74-85a0-b3409d9bb5e1</SerialNumber>
+    <SubscriptionExpiry>20111213</SubscriptionExpiry>
+    <LicenseExpiry>20110112</LicenseExpiry>
+    <ExpiryNote>This is a temporary license for non-commercial use only and it will expire on 2011-01-12.</ExpiryNote>
+    <LicenseVersion>2.2</LicenseVersion>
+  </Data>
+  <Signature>PzYLQeBsqLbGyBafGrVnDy9G75QVFDLZZ2KII3NmHVagN2/KoTmeHQ2JnXciP5govXGRBXGuKObUGRvl29L2hzjNs4+G2I4GZbGZpfL/m927tK5aBQNMhvg/uQrzE6PQkK/mzyY+jAtpnHg2LNGKud0VyDHodGT7xarEgcYno8o=</Signature>
+</License>
