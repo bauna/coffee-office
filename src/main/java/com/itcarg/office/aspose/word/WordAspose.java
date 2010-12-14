@@ -13,8 +13,9 @@ import com.aspose.words.Range;
 import com.aspose.words.Run;
 import com.aspose.words.VisitorAction;
 import com.itcarg.office.aspose.BaseAspose;
+import com.itcarg.office.word.WordHandler;
 
-public class WordAspose extends BaseAspose {
+public class WordAspose extends BaseAspose implements WordHandler {
 
     private Document document;
 
@@ -22,6 +23,10 @@ public class WordAspose extends BaseAspose {
         document = new Document(docStream);
     }
 
+    /**
+     * @see com.itcarg.office.aspose.word.WordHandler#replaceMap(java.util.Map)
+     */
+    @Override
     public Map<String, Integer> replaceMap(Map<String, String> properties) throws Exception {
         HashMap<String, Integer> replaceCounts = new HashMap<String, Integer>() {
             private static final long serialVersionUID = 1L;
