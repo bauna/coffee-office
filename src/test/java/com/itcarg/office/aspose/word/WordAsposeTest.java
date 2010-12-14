@@ -7,6 +7,7 @@ import static org.testng.AssertJUnit.assertTrue;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,16 +15,18 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 public class WordAsposeTest {
+    private AtomicInteger idGenerator = new AtomicInteger(0);
+    
     private static final Logger log = LoggerFactory.getLogger(WordAsposeTest.class);
 
     @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000)
     public void testReplaceMapDocx() throws Exception {
-        runFile("/word/test_document.docx", "test.docx");
+        runFile("/word/test_document.docx", "test" + idGenerator.addAndGet(1) + ".docx");
     }
 
     @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000)
     public void testReplaceMapDoc() throws Exception {
-        runFile("/word/test_document.doc", "test.doc");
+        runFile("/word/test_document.doc", "test" + idGenerator.addAndGet(1) + ".doc");
     }
 
     private void runFile(String fileName, String out) throws Exception {
