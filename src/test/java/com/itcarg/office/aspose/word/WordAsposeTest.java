@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
+import com.itcarg.office.word.WordHandler;
+
 public class WordAsposeTest {
     private AtomicInteger idGenerator = new AtomicInteger(0);
     
@@ -31,7 +33,7 @@ public class WordAsposeTest {
 
     private void runFile(String fileName, String out) throws Exception {
         log.info("start test for {}", fileName);
-        WordAspose doc = new WordAspose(getClass().getResourceAsStream(fileName));
+        WordHandler doc = new WordAspose(getClass().getResourceAsStream(fileName));
         assertNotNull(doc);
 
         Map<String, String> props = new LinkedHashMap<String, String>();
