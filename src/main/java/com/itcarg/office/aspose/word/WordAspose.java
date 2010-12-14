@@ -55,18 +55,18 @@ public class WordAspose extends BaseAspose implements WordHandler {
         return new HashMap<String, Integer>(replaceCounts);
     }
 
+    /**
+     * @see com.itcarg.office.word.WordHandler#saveAs(java.io.File)
+     */
+    @Override
     public void saveAs(File fileName) throws Exception {
         getDocument().save(fileName.getAbsolutePath());
     }
 
-    public Document getDocument() {
+    private Document getDocument() {
         return document;
     }
 
-    public void setDocument(Document document) {
-        this.document = document;
-    }
-    
     private class DocumentReplacer extends DocumentVisitor {
         private Map<String, String> properties;
         private HashMap<String, Integer> replaceCounts;
