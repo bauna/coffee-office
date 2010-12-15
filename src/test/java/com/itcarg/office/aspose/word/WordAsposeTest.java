@@ -4,7 +4,9 @@ import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -35,7 +37,8 @@ public class WordAsposeTest {
 
     private void runFile(String fileName, String out) throws Exception {
         log.info("start test for {}", fileName);
-        WordHandler doc = new WordAspose(getClass().getResourceAsStream(fileName));
+        WordHandler doc = new WordAspose(new BufferedInputStream(
+                getClass().getResourceAsStream(fileName)));
         assertNotNull(doc);
 
         Map<String, String> props = new LinkedHashMap<String, String>();
@@ -62,5 +65,23 @@ public class WordAsposeTest {
             }
         }
         log.info("end test for {}", fileName);
+    }
+    
+    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000,
+            testName="doc-images")
+    public void testMailMerge() throws Exception {
+       Map<String,Object> props = new HashMap<String, Object>();
+       Map<String, String> replaces = new HashMap<String, String>();
+       WordAspose doc = new WordAspose(new BufferedInputStream(
+               getClass().getResourceAsStream("/word/image_mailmerge.doc")));
+       replaces.put("key1", "value1");
+       props.put("name", "Jane Doe");
+       props.put("image1", getClass().getResource("/word/test.jpg"));
+       
+       doc.replaceMap(replaces);
+       doc.mailMerge(props);
+       
+       doc.saveAs(new File(System.getProperty("java.io.tmpdir"), 
+               "mailMerge" + idGenerator.addAndGet(1) + ".doc"));
     }
 }
