@@ -58,6 +58,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.aspose</groupId>
+			<artifactId>aspose-slides</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>5.14</version>
