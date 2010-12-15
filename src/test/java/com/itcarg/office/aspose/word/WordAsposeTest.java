@@ -76,7 +76,7 @@ public class WordAsposeTest {
                getClass().getResourceAsStream("/word/image_mailmerge.doc")));
        replaces.put("key1", "value1");
        props.put("name", "Jane Doe");
-       props.put("image1", getClass().getResource("/word/test.jpg"));
+       props.put("image1", getClass().getResource("/test.jpg"));
        
        doc.replaceMap(replaces);
        doc.mailMerge(props);
