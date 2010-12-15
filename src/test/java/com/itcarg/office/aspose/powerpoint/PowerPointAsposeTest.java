@@ -4,7 +4,10 @@ import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -12,6 +15,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
+
+import com.aspose.slides.PptImageException;
 
 public class PowerPointAsposeTest {
     private AtomicInteger idGenerator = new AtomicInteger(0);
@@ -54,5 +59,16 @@ public class PowerPointAsposeTest {
         fileOut.delete();
         doc.saveAs(fileOut);
         assertTrue(fileOut.exists());
+    }
+    
+    @Test
+    public void testImage() throws PptImageException, IOException {
+        Map<String, URL> images = new HashMap<String, URL>();
+        images.put("image1", getClass().getResource("/test.jpg"));
+        PowerpointPptAspose doc = new PowerpointPptAspose(getFile("/powerp/image.ppt"));
+        doc.replaceImages(images);
+        
+        doc.saveAs(new File(System.getProperty("java.io.tmpdir"), 
+                "testImage" + idGenerator.addAndGet(1) + ".ppt"));
     }
 }
