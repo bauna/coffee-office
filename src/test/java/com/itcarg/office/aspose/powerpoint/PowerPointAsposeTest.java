@@ -20,18 +20,20 @@ public class PowerPointAsposeTest {
 
     @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000)
     public void testReplaceMapPptx() throws Exception {
-        log.info("loading powerpoint file: {}", "/powerp/test.pptx");
-        runFile(new PowerpointPptxAspose(getFile("/powerp/test.pptx")),
+        String testPptx = "/powerp/test.pptx";
+        log.info("loading powerpoint file: {}", testPptx);
+        runFile(new PowerpointPptxAspose(getFile(testPptx)),
                 "test" + idGenerator.addAndGet(1) + ".pptx");
-        log.info("end test for {}", "/powerp/test.pptx");
+        log.info("end test for {}", testPptx);
     }
 
     @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000)
     public void testReplaceMapPpt() throws Exception {
-        log.info("loading powerpoint file: {}", "/powerp/test.ppt");
-        runFile(new PowerpointPptAspose(getFile("/powerp/test.ppt")),
+        String testPpt = "/powerp/test.ppt";
+        log.info("loading powerpoint file: {}", testPpt);
+        runFile(new PowerpointPptAspose(getFile(testPpt)),
                 "test" + idGenerator.addAndGet(1) + ".ppt");
-        log.info("end test for {}", "/powerp/test.ppt");
+        log.info("end test for {}", testPpt);
     }
 
     private InputStream getFile(String filename) {
