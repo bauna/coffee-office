@@ -22,7 +22,7 @@ public class PowerPointAsposeTest {
     public void testReplaceMapPptx() throws Exception {
         log.info("loading powerpoint file: {}", "/powerp/test.pptx");
         runFile(new PowerpointPptxAspose(getFile("/powerp/test.pptx")),
-                "test" + idGenerator.addAndGet(1) + ".ppt");
+                "test" + idGenerator.addAndGet(1) + ".pptx");
         log.info("end test for {}", "/powerp/test.pptx");
     }
 
@@ -34,8 +34,8 @@ public class PowerPointAsposeTest {
         log.info("end test for {}", "/powerp/test.ppt");
     }
 
-    private InputStream getFile(String fileName) {
-        return new BufferedInputStream(getClass().getResourceAsStream(fileName));
+    private InputStream getFile(String filename) {
+        return new BufferedInputStream(getClass().getResourceAsStream(filename));
     }
     
     private void runFile(PowerpointHandler doc, String out) throws Exception {
