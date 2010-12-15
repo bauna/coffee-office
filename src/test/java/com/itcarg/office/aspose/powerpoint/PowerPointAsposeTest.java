@@ -18,7 +18,8 @@ public class PowerPointAsposeTest {
 
     private static final Logger log = LoggerFactory.getLogger(PowerPointAsposeTest.class);
 
-    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000)
+    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000,
+            testName="pptx-aspose")
     public void testReplaceMapPptx() throws Exception {
         String testPptx = "/powerp/test.pptx";
         log.info("loading powerpoint file: {}", testPptx);
@@ -27,7 +28,8 @@ public class PowerPointAsposeTest {
         log.info("end test for {}", testPptx);
     }
 
-    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000)
+    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000,
+            testName="ppt-aspose")
     public void testReplaceMapPpt() throws Exception {
         String testPpt = "/powerp/test.ppt";
         log.info("loading powerpoint file: {}", testPpt);

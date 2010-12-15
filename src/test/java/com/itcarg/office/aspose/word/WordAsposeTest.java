@@ -21,12 +21,14 @@ public class WordAsposeTest {
     
     private static final Logger log = LoggerFactory.getLogger(WordAsposeTest.class);
 
-    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000)
+    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000,
+            testName="docx-aspose")
     public void testReplaceMapDocx() throws Exception {
         runFile("/word/test_document.docx", "test" + idGenerator.addAndGet(1) + ".docx");
     }
 
-    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000)
+    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000,
+            testName="doc-aspose")
     public void testReplaceMapDoc() throws Exception {
         runFile("/word/test_document.doc", "test" + idGenerator.addAndGet(1) + ".doc");
     }

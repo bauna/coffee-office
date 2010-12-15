@@ -19,7 +19,8 @@ public class ManualDocxTest {
     
     private static final Logger log = LoggerFactory.getLogger(ManualDocxTest.class);
 
-    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000)
+    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000,
+            testName="docx-manual")
     public void testReplaceMapDocx() throws Exception {
         runFile("/word/test_document.docx", "ManualTest" + idGenerator.addAndGet(1) + ".docx");
     }
