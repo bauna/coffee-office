@@ -2,6 +2,7 @@ package com.itcarg.office.aspose.word;
 
 import java.io.File;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -9,6 +10,9 @@ import java.util.regex.Pattern;
 import com.aspose.words.Cell;
 import com.aspose.words.Document;
 import com.aspose.words.DocumentVisitor;
+import com.aspose.words.MailMerge;
+import com.aspose.words.MergeImageFieldEventArgs;
+import com.aspose.words.MergeImageFieldEventHandler;
 import com.aspose.words.Range;
 import com.aspose.words.Run;
 import com.aspose.words.VisitorAction;
@@ -55,6 +59,28 @@ public class WordAspose extends BaseAspose implements WordHandler {
         return new HashMap<String, Integer>(replaceCounts);
     }
 
+    public void mailMerge(final Map<String, Object> properties) throws Exception {
+        
+        MailMerge mailMerge = getDocument().getMailMerge();
+        mailMerge.addMergeImageFieldEventHandler(new MergeImageFieldEventHandler() {
+            
+            @Override
+            public void mergeImageField(Object sender, MergeImageFieldEventArgs e) throws Exception {
+                URL url = (URL) e.getFieldValue();
+                e.setImageStream(url.openStream());
+            }
+        });
+        String fieldnames[] = new String[properties.size()];
+        Object values[] = new Object[properties.size()];
+        int i = 0;
+        for (Map.Entry<String, Object> entry : properties.entrySet()) {
+            fieldnames[i] = entry.getKey();
+            values[i] = entry.getValue();
+            i++;
+        }
+        mailMerge.execute(fieldnames, values);
+    }
+    
     /**
      * @see com.itcarg.office.word.WordHandler#saveAs(java.io.File)
      */
