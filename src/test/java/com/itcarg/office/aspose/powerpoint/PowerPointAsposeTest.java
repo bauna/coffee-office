@@ -61,7 +61,8 @@ public class PowerPointAsposeTest {
         assertTrue(fileOut.exists());
     }
     
-    @Test
+    @Test(threadPoolSize = 4, invocationCount = 20, timeOut = 10000,
+            testName="ppt-image-aspose")
     public void testImage() throws PptImageException, IOException {
         Map<String, URL> images = new HashMap<String, URL>();
         images.put("image1", getClass().getResource("/test.jpg"));
