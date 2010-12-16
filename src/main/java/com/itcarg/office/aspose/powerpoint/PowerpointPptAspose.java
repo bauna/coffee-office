@@ -14,6 +14,7 @@ import com.aspose.slides.FillType;
 import com.aspose.slides.Paragraph;
 import com.aspose.slides.Paragraphs;
 import com.aspose.slides.Picture;
+import com.aspose.slides.PictureFrame;
 import com.aspose.slides.Placeholder;
 import com.aspose.slides.Placeholders;
 import com.aspose.slides.PptImageException;
@@ -81,13 +82,16 @@ public class PowerpointPptAspose extends BaseAspose implements PowerpointHandler
                 if (shape == null) {
                     continue;
                 }
-                shape.getFillFormat().setType(FillType.PICTURE);
-
                 Picture pic = new Picture(getPresentation(), new BufferedInputStream(entry
                         .getValue().openStream()));
-
+                
                 int picId = getPresentation().getPictures().add(pic);
-                shape.getFillFormat().setPictureId(picId);
+                if (shape instanceof PictureFrame) {
+                    ((PictureFrame) shape).setPictureId(picId);
+                } else {
+                    shape.getFillFormat().setType(FillType.PICTURE);
+                    shape.getFillFormat().setPictureId(picId);
+                }
             }
         }
     }
